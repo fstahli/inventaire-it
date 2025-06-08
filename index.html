@@ -438,7 +438,7 @@
             
             <div class="inventory-table">
                 <div class="table-header">
-                    📋 Inventaire actuel (<span id="total-items">0</span> éléments)
+                    📋 Inventaire actuel (<span id="total-items">0 références • 0 articles</span>)
                 </div>
                 
                 <div id="table-container">
@@ -537,8 +537,14 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    const content = JSON.parse(atob(data.content));
+                    const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
                     inventaire = content.items || [];
+                    // Migrer les anciens articles sans quantité
+                    inventaire.forEach(item => {
+                        if (!item.quantite) {
+                            item.quantite = 1;
+                        }
+                    });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
                     }
@@ -585,12 +591,12 @@
                 const data = {
                     items: inventaire,
                     lastUpdate: Date.now(),
-                    version: '1.0'
+                    version: '1.1'
                 };
 
                 const payload = {
                     message: `Mise à jour inventaire IT - ${new Date().toLocaleString('fr-FR')}`,
-                    content: btoa(JSON.stringify(data, null, 2)),
+                    content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
                     committer: {
                         name: 'Inventaire IT App',
                         email: 'inventaire@app.local'
@@ -622,11 +628,17 @@
             }
         }
 
-        function chargerDepuisLocal() {
+        async function chargerDepuisLocal() {
             try {
                 const saved = localStorage.getItem('inventaire-it');
                 if (saved) {
                     inventaire = JSON.parse(saved);
+                    // Migrer les anciens articles sans quantité
+                    inventaire.forEach(item => {
+                        if (!item.quantite) {
+                            item.quantite = 1;
+                        }
+                    });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
                     }
@@ -654,9 +666,31 @@
             const emplacement = document.getElementById('emplacement').value;
             const date = document.getElementById('date').value;
             const notes = document.getElementById('notes').value;
+            const quantite = parseInt(document.getElementById('quantite').value) || 1;
 
-            if (!marque.trim() || !modele.trim()) {
-                alert('Veuillez remplir au moins la marque et le modèle');
+            if (!marque.trim()) {
+                alert('Veuillez remplir au moins la marque');
+                return;
+            }
+
+            // Vérifier si un article similaire existe déjà (même type, marque, modèle)
+            const articleExistant = inventaire.find(item => 
+                item.type === type && 
+                item.marque.toLowerCase() === marque.trim().toLowerCase() &&
+                (item.modele || '').toLowerCase() === (modele.trim() || '').toLowerCase() &&
+                item.etat === etat &&
+                (item.emplacement || '').toLowerCase() === (emplacement.trim() || '').toLowerCase()
+            );
+
+            if (articleExistant) {
+                if (confirm(`Un article similaire existe déjà (Quantité: ${articleExistant.quantite}). Voulez-vous augmenter sa quantité de ${quantite} ?`)) {
+                    articleExistant.quantite += quantite;
+                    articleExistant.notes = notes.trim() || articleExistant.notes;
+                    articleExistant.timestamp = Date.now();
+                    await sauvegarderInventaire();
+                    afficherInventaire();
+                    viderFormulaire();
+                }
                 return;
             }
 
@@ -664,12 +698,13 @@
                 id: idCounter++,
                 type,
                 marque: marque.trim(),
-                modele: modele.trim(),
+                modele: modele.trim() || '',
                 serie: serie.trim(),
                 etat,
                 emplacement: emplacement.trim(),
                 date,
                 notes: notes.trim(),
+                quantite: quantite,
                 timestamp: Date.now()
             };
 
@@ -677,6 +712,25 @@
             await sauvegarderInventaire();
             afficherInventaire();
             viderFormulaire();
+        }
+
+        async function modifierQuantite(id, changement) {
+            const item = inventaire.find(i => i.id === id);
+            if (!item) return;
+
+            const nouvelleQuantite = (item.quantite || 1) + changement;
+            
+            if (nouvelleQuantite <= 0) {
+                if (confirm('La quantité sera de 0. Voulez-vous supprimer cet article ?')) {
+                    await supprimerItem(id);
+                }
+                return;
+            }
+
+            item.quantite = nouvelleQuantite;
+            item.timestamp = Date.now();
+            await sauvegarderInventaire();
+            afficherInventaire();
         }
 
         async function supprimerItem(id) {
@@ -705,7 +759,9 @@
             const container = document.getElementById('table-container');
             const totalItems = document.getElementById('total-items');
             
-            totalItems.textContent = inventaire.length;
+            // Calculer le total d'articles (somme des quantités)
+            const totalQuantite = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
+            totalItems.textContent = `${inventaire.length} références • ${totalQuantite} articles`;
 
             if (inventaire.length === 0) {
                 container.innerHTML = `
@@ -725,6 +781,7 @@
                             <th>Type</th>
                             <th>Marque</th>
                             <th>Modèle</th>
+                            <th>Quantité</th>
                             <th>N° Série</th>
                             <th>État</th>
                             <th>Emplacement</th>
@@ -741,7 +798,14 @@
                     <tr>
                         <td>${item.type}</td>
                         <td>${item.marque}</td>
-                        <td>${item.modele}</td>
+                        <td>${item.modele || '-'}</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <button onclick="modifierQuantite(${item.id}, -1)" class="btn-quantity" style="background: #e74c3c; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer;">-</button>
+                                <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.quantite || 1}</span>
+                                <button onclick="modifierQuantite(${item.id}, 1)" class="btn-quantity" style="background: #27ae60; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer;">+</button>
+                            </div>
+                        </td>
                         <td>${item.serie || '-'}</td>
                         <td><span style="padding: 4px 8px; border-radius: 15px; font-size: 0.8em; font-weight: bold; background: ${getEtatColor(item.etat)};">${item.etat}</span></td>
                         <td>${item.emplacement || '-'}</td>
@@ -780,6 +844,7 @@
             document.getElementById('serie').value = '';
             document.getElementById('emplacement').value = '';
             document.getElementById('notes').value = '';
+            document.getElementById('quantite').value = '1';
             document.getElementById('date').value = new Date().toISOString().split('T')[0];
         }
 
@@ -799,14 +864,16 @@
             // Date du rapport
             doc.setFontSize(12);
             doc.text(`Généré le : ${new Date().toLocaleDateString('fr-FR')}`, 20, 30);
-            doc.text(`Total d'éléments : ${inventaire.length}`, 20, 40);
+            const totalQuantite = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
+            doc.text(`${inventaire.length} références • ${totalQuantite} articles au total`, 20, 40);
 
             // Tableau
-            const colonnes = ['Type', 'Marque', 'Modèle', 'N° Série', 'État', 'Emplacement', 'Date', 'Notes'];
+            const colonnes = ['Type', 'Marque', 'Modèle', 'Quantité', 'N° Série', 'État', 'Emplacement', 'Date', 'Notes'];
             const donnees = inventaire.map(item => [
                 item.type,
                 item.marque,
-                item.modele,
+                item.modele || '-',
+                item.quantite || 1,
                 item.serie || '-',
                 item.etat,
                 item.emplacement || '-',
