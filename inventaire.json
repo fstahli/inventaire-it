@@ -119,8 +119,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749406558509
+    },
+    {
+      "id": 27,
+      "type": "Casque",
+      "marque": "Logitech",
+      "modele": "USB-C",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749406576394
     }
   ],
-  "lastUpdate": 1749406558712,
+  "lastUpdate": 1749406576594,
   "version": "2.0"
 }
