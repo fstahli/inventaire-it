@@ -59,18 +59,8 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749408187627
-    },
-    {
-      "id": 38,
-      "type": "test",
-      "marque": "",
-      "modele": "test",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749408922515
     }
   ],
-  "lastUpdate": 1749409476259,
+  "lastUpdate": 1749409481412,
   "version": "2.0"
 }
