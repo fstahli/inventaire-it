@@ -179,8 +179,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749406654933
+    },
+    {
+      "id": 33,
+      "type": "TONER",
+      "marque": "",
+      "modele": "M",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749406660383
     }
   ],
-  "lastUpdate": 1749406655154,
+  "lastUpdate": 1749406660570,
   "version": "2.0"
 }
