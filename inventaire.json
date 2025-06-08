@@ -9,8 +9,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749404455313
+    },
+    {
+      "id": 2,
+      "type": "Écran",
+      "marque": "Dell",
+      "modele": "Incurvé",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749404508326
     }
   ],
-  "lastUpdate": 1749404455318,
+  "lastUpdate": 1749404508333,
   "version": "2.0"
 }
