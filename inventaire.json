@@ -29,8 +29,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749405580773
+    },
+    {
+      "id": 6,
+      "type": "Écran",
+      "marque": "HP",
+      "modele": "G5",
+      "etat": "Moyen",
+      "notes": "",
+      "quantite": 2,
+      "timestamp": 1749405597795
     }
   ],
-  "lastUpdate": 1749405581154,
+  "lastUpdate": 1749405597991,
   "version": "2.0"
 }
