@@ -945,6 +945,8 @@
                     inventaire = content.items || [];
                     inventaire.forEach(item => {
                         if (!item.quantite) item.quantite = 1;
+                        // Nettoyer les anciennes valeurs "Sans marque"
+                        if (item.marque === 'Sans marque') item.marque = '';
                     });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
@@ -1032,6 +1034,8 @@
                     inventaire = JSON.parse(saved);
                     inventaire.forEach(item => {
                         if (!item.quantite) item.quantite = 1;
+                        // Nettoyer les anciennes valeurs "Sans marque"
+                        if (item.marque === 'Sans marque') item.marque = '';
                     });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
