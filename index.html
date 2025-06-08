@@ -1208,7 +1208,7 @@
                         <div class="grid-cell" data-label="Type & Marque">
                             <div>
                                 <div style="font-weight: 600; color: #2c3e50;">${item.type}</div>
-                                <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque || 'Sans marque'}</div>
+                                <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque || '-'}</div>
                             </div>
                         </div>
                         <div class="grid-cell" data-label="Modèle">${item.modele || '-'}</div>
@@ -1275,16 +1275,16 @@
             const secondaryColor = [52, 73, 94];
             const accentColor = [52, 152, 219];
 
-            // En-tête avec logo et titre
+            // En-tête avec titre simplifié
             doc.setFillColor(...primaryColor);
             doc.rect(0, 0, 297, 25, 'F');
             
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(24);
             doc.setFont('helvetica', 'bold');
-            doc.text('INVENTAIRE IT PROFESSIONNEL', 20, 17);
+            doc.text('INVENTAIRE IT', 20, 17);
 
-            // Informations du rapport
+            // Date du rapport
             doc.setTextColor(...primaryColor);
             doc.setFontSize(12);
             doc.setFont('helvetica', 'normal');
@@ -1299,36 +1299,6 @@
             const timeStr = now.toLocaleTimeString('fr-FR');
             
             doc.text(`Genere le ${dateStr} a ${timeStr}`, 20, 35);
-
-            // Statistiques en boîtes colorées
-            const totalReferences = inventaire.length;
-            const totalItems = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
-            const bonEtat = inventaire.filter(item => item.etat === 'Neuf' || item.etat === 'Bon')
-                .reduce((sum, item) => sum + (item.quantite || 1), 0);
-
-            // Boîte 1 - Références
-            doc.setFillColor(231, 76, 60);
-            doc.roundedRect(20, 45, 60, 20, 3, 3, 'F');
-            doc.setTextColor(255, 255, 255);
-            doc.setFontSize(16);
-            doc.setFont('helvetica', 'bold');
-            doc.text(totalReferences.toString(), 50, 53, { align: 'center' });
-            doc.setFontSize(10);
-            doc.text('REFERENCES', 50, 60, { align: 'center' });
-
-            // Boîte 2 - Articles
-            doc.setFillColor(39, 174, 96);
-            doc.roundedRect(90, 45, 60, 20, 3, 3, 'F');
-            doc.text(totalItems.toString(), 120, 53, { align: 'center' });
-            doc.setFontSize(16);
-            doc.text('ARTICLES', 120, 60, { align: 'center' });
-
-            // Boîte 3 - Bon état
-            doc.setFillColor(52, 152, 219);
-            doc.roundedRect(160, 45, 60, 20, 3, 3, 'F');
-            doc.text(bonEtat.toString(), 190, 53, { align: 'center' });
-            doc.setFontSize(10);
-            doc.text('BON ETAT', 190, 60, { align: 'center' });
 
             // Tableau principal
             const colonnes = [
@@ -1352,7 +1322,7 @@
             doc.autoTable({
                 columns: colonnes,
                 body: donnees,
-                startY: 75,
+                startY: 50,
                 styles: { 
                     fontSize: 9,
                     cellPadding: 4,
@@ -1397,14 +1367,16 @@
                 }
             });
 
-            // Pied de page
+            // Pied de page simplifié
             const pageHeight = doc.internal.pageSize.getHeight();
             doc.setFillColor(...secondaryColor);
             doc.rect(0, pageHeight - 15, 297, 15, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(8);
-            doc.text('Inventaire IT Pro - Genere automatiquement', 20, pageHeight - 8);
-            doc.text(`Page 1 - ${totalItems} articles au total`, 250, pageHeight - 8);
+            doc.text('Inventaire IT', 20, pageHeight - 8);
+            
+            const totalItems = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
+            doc.text(`${totalItems} articles au total`, 250, pageHeight - 8);
 
             // Sauvegarder avec un nom personnalisé
             const fileName = `Inventaire-IT-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}.pdf`;
