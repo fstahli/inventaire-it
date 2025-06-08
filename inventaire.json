@@ -1,5 +1,16 @@
 {
-  "items": [],
-  "lastUpdate": 1749405502400,
+  "items": [
+    {
+      "id": 3,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G11",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 2,
+      "timestamp": 1749405525800
+    }
+  ],
+  "lastUpdate": 1749405525994,
   "version": "2.0"
 }
