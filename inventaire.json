@@ -10,8 +10,8 @@
       "emplacement": "",
       "date": "2025-06-08",
       "notes": "",
-      "quantite": 3,
-      "timestamp": 1749403431525
+      "quantite": 2,
+      "timestamp": 1749404106969
     },
     {
       "id": 2,
@@ -24,6 +24,6 @@
       "timestamp": 1749404098834
     }
   ],
-  "lastUpdate": 1749404099168,
+  "lastUpdate": 1749404107255,
   "version": "2.0"
 }
