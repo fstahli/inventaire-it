@@ -12,8 +12,18 @@
       "notes": "",
       "quantite": 3,
       "timestamp": 1749403431525
+    },
+    {
+      "id": 2,
+      "type": "Cable HDMI",
+      "marque": "Test",
+      "modele": "",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749404098834
     }
   ],
-  "lastUpdate": 1749403431535,
-  "version": "1.1"
+  "lastUpdate": 1749404099168,
+  "version": "2.0"
 }
