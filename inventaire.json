@@ -157,8 +157,8 @@
       "modele": "WIRELESS",
       "etat": "Neuf",
       "notes": "",
-      "quantite": 7,
-      "timestamp": 1749406794938
+      "quantite": 8,
+      "timestamp": 1749406796181
     },
     {
       "id": 31,
@@ -211,6 +211,6 @@
       "timestamp": 1749406666306
     }
   ],
-  "lastUpdate": 1749406795126,
+  "lastUpdate": 1749406796398,
   "version": "2.0"
 }
