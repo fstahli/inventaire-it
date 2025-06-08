@@ -61,16 +61,6 @@
       "timestamp": 1749408187627
     },
     {
-      "id": 37,
-      "type": "Test",
-      "marque": "test",
-      "modele": "",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749408897180
-    },
-    {
       "id": 38,
       "type": "test",
       "marque": "",
@@ -81,6 +71,6 @@
       "timestamp": 1749408922515
     }
   ],
-  "lastUpdate": 1749409466388,
+  "lastUpdate": 1749409476259,
   "version": "2.0"
 }
