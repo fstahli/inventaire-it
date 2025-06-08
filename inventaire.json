@@ -1,19 +1,6 @@
 {
   "items": [
     {
-      "id": 1,
-      "type": "Écran",
-      "marque": "test",
-      "modele": "",
-      "serie": "",
-      "etat": "Neuf",
-      "emplacement": "",
-      "date": "2025-06-08",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749404108714
-    },
-    {
       "id": 2,
       "type": "Cable HDMI",
       "marque": "Test",
@@ -24,6 +11,6 @@
       "timestamp": 1749404098834
     }
   ],
-  "lastUpdate": 1749404108916,
+  "lastUpdate": 1749404189771,
   "version": "2.0"
 }
