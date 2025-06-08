@@ -11,16 +11,6 @@
       "timestamp": 1749405557910
     },
     {
-      "id": 7,
-      "type": "Écran",
-      "marque": "Docking",
-      "modele": "",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749405622339
-    },
-    {
       "id": 9,
       "type": "Écran",
       "marque": "HDMI",
@@ -31,6 +21,6 @@
       "timestamp": 1749405707907
     }
   ],
-  "lastUpdate": 1749406376283,
+  "lastUpdate": 1749406379186,
   "version": "2.0"
 }
