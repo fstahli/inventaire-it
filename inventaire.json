@@ -111,16 +111,6 @@
       "timestamp": 1749406773977
     },
     {
-      "id": 28,
-      "type": "Clavier",
-      "marque": "",
-      "modele": "CH",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749406780577
-    },
-    {
       "id": 29,
       "type": "Clavier",
       "marque": "",
@@ -191,6 +181,6 @@
       "timestamp": 1749406823205
     }
   ],
-  "lastUpdate": 1749408097836,
+  "lastUpdate": 1749408117983,
   "version": "2.0"
 }
