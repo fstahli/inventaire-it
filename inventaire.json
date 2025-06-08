@@ -39,8 +39,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749406427494
+    },
+    {
+      "id": 18,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G5",
+      "etat": "Moyen",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749406435768
     }
   ],
-  "lastUpdate": 1749406427719,
+  "lastUpdate": 1749406435958,
   "version": "2.0"
 }
