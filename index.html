@@ -625,31 +625,6 @@
                 flex: 1;
             }
             
-            .grid-header, .grid-row {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .grid-header {
-                display: none;
-            }
-            
-            .grid-cell {
-                padding: 10px;
-                border-right: none;
-                border-bottom: 1px solid #ecf0f1;
-                justify-content: center;
-            }
-            
-            .grid-cell::before {
-                content: attr(data-label);
-                font-weight: 600;
-                color: #7f8c8d;
-                margin-right: 10px;
-                font-size: 0.8em;
-                text-transform: uppercase;
-            }
-            
             .status-indicator {
                 position: static;
                 margin-bottom: 20px;
@@ -658,6 +633,152 @@
             
             .inventory-stats {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Affichage mobile en cartes au lieu de grille */
+            .inventory-grid {
+                display: block;
+            }
+            
+            .grid-header {
+                display: none;
+            }
+            
+            .grid-row {
+                display: block;
+                background: white;
+                margin-bottom: 15px;
+                border-radius: 12px;
+                padding: 15px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                border: 1px solid #e9ecef;
+                position: relative;
+            }
+            
+            .grid-row:hover {
+                transform: none;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+            
+            .grid-cell {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+                border-right: none;
+                border-bottom: 1px solid #f1f3f4;
+            }
+            
+            .grid-cell:last-child {
+                border-bottom: none;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            .grid-cell::before {
+                content: attr(data-label) ":";
+                font-weight: 600;
+                color: #7f8c8d;
+                font-size: 0.8em;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                min-width: 80px;
+            }
+            
+            .grid-cell[data-label="Type & Marque"]::before {
+                content: "ÉQUIPEMENT:";
+            }
+            
+            .grid-cell[data-label="Actions"]::before {
+                content: "";
+            }
+            
+            /* Réorganiser l'affichage Type & Marque sur mobile */
+            .grid-cell[data-label="Type & Marque"] {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .grid-cell[data-label="Type & Marque"] > div {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .drag-handle {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 1em;
+            }
+            
+            /* Améliorer les contrôles de quantité sur mobile */
+            .quantity-controls {
+                gap: 8px;
+            }
+            
+            .btn-quantity {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+            
+            .quantity-display {
+                min-width: 30px;
+                font-size: 1em;
+                padding: 2px 6px;
+            }
+            
+            /* Badge d'état plus petit sur mobile */
+            .state-badge {
+                padding: 4px 8px;
+                font-size: 0.7em;
+            }
+            
+            /* Bouton de suppression plus petit */
+            .btn-danger {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+            
+            /* Section d'ajout optimisée pour mobile */
+            .section-toggle {
+                font-size: 1em;
+                padding: 12px 20px;
+            }
+            
+            .section-content {
+                padding: 20px;
+            }
+            
+            /* Statistiques sur 3 colonnes au lieu de 2 */
+            .inventory-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .stat-card {
+                padding: 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.5em;
+            }
+            
+            .stat-label {
+                font-size: 0.7em;
+            }
+            
+            /* Barre de recherche mobile */
+            .search-box {
+                padding: 15px;
+            }
+            
+            .search-input {
+                padding: 12px 15px 12px 40px;
+                font-size: 16px; /* Évite le zoom sur iOS */
             }
         }
     </style>
@@ -990,14 +1111,21 @@
                     inventaire = content.items || [];
                     inventaire.forEach(item => {
                         if (!item.quantite) item.quantite = 1;
-                        // Nettoyer les anciennes valeurs "Sans marque"
-                        if (item.marque === 'Sans marque') item.marque = '';
+                        // Nettoyer complètement toutes les valeurs "Sans marque"
+                        if (item.marque === 'Sans marque' || item.marque === 'sans marque') {
+                            item.marque = '';
+                        }
+                        if (item.modele === 'Sans modèle' || item.modele === 'sans modèle') {
+                            item.modele = '';
+                        }
                     });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
                     }
                     afficherInventaire();
                     updateStatusIndicator('online');
+                    // Re-sauvegarder pour nettoyer définitivement
+                    sauvegarderInventaire();
                 } else if (response.status === 404) {
                     await sauvegarderVersGitHub();
                 } else {
@@ -1079,13 +1207,20 @@
                     inventaire = JSON.parse(saved);
                     inventaire.forEach(item => {
                         if (!item.quantite) item.quantite = 1;
-                        // Nettoyer les anciennes valeurs "Sans marque"
-                        if (item.marque === 'Sans marque') item.marque = '';
+                        // Nettoyer complètement toutes les valeurs "Sans marque"
+                        if (item.marque === 'Sans marque' || item.marque === 'sans marque') {
+                            item.marque = '';
+                        }
+                        if (item.modele === 'Sans modèle' || item.modele === 'sans modèle') {
+                            item.modele = '';
+                        }
                     });
                     if (inventaire.length > 0) {
                         idCounter = Math.max(...inventaire.map(item => item.id)) + 1;
                     }
                     afficherInventaire();
+                    // Re-sauvegarder pour nettoyer définitivement
+                    sauvegarderInventaire();
                 }
             } catch (e) {
                 console.error('Erreur chargement local:', e);
@@ -1155,10 +1290,10 @@
             const nouvelItem = {
                 id: idCounter++,
                 type,
-                marque: marque || '',
-                modele: modele || '',
+                marque: marque && marque.trim() && marque.trim() !== 'Sans marque' ? marque.trim() : '',
+                modele: modele && modele.trim() ? modele.trim() : '',
                 etat,
-                notes,
+                notes: notes && notes.trim() ? notes.trim() : '',
                 quantite,
                 timestamp: Date.now()
             };
@@ -1287,7 +1422,7 @@
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             inventaireFiltré = inventaire.filter(item => 
                 item.type.toLowerCase().includes(searchTerm) ||
-                item.marque.toLowerCase().includes(searchTerm) ||
+                (item.marque && item.marque.toLowerCase().includes(searchTerm)) ||
                 (item.modele && item.modele.toLowerCase().includes(searchTerm)) ||
                 item.etat.toLowerCase().includes(searchTerm) ||
                 (item.notes && item.notes.toLowerCase().includes(searchTerm))
@@ -1340,7 +1475,7 @@
                                 <span class="drag-handle">⋮⋮</span>
                                 <div>
                                     <div style="font-weight: 600; color: #2c3e50;">${item.type}</div>
-                                    <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque || '-'}</div>
+                                    <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque && item.marque.trim() ? item.marque : '-'}</div>
                                 </div>
                             </div>
                         </div>
