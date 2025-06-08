@@ -59,8 +59,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749408187627
+    },
+    {
+      "id": 37,
+      "type": "Alimentation",
+      "marque": "",
+      "modele": "USB-C",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749408220191
     }
   ],
-  "lastUpdate": 1749408187835,
+  "lastUpdate": 1749408220456,
   "version": "2.0"
 }
