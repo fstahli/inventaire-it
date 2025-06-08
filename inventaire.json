@@ -111,16 +111,6 @@
       "timestamp": 1749406773977
     },
     {
-      "id": 29,
-      "type": "Clavier",
-      "marque": "",
-      "modele": "US",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749406783474
-    },
-    {
       "id": 30,
       "type": "Souris",
       "marque": "Logitech",
@@ -181,6 +171,6 @@
       "timestamp": 1749406823205
     }
   ],
-  "lastUpdate": 1749408117983,
+  "lastUpdate": 1749408122031,
   "version": "2.0"
 }
