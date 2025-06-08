@@ -1208,7 +1208,7 @@
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(24);
             doc.setFont('helvetica', 'bold');
-            doc.text('📦 INVENTAIRE IT PROFESSIONNEL', 20, 17);
+            doc.text('INVENTAIRE IT PROFESSIONNEL', 20, 17);
 
             // Informations du rapport
             doc.setTextColor(...primaryColor);
@@ -1221,10 +1221,10 @@
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-            });
+            }).replace(/é/g, 'e').replace(/è/g, 'e').replace(/à/g, 'a').replace(/ç/g, 'c');
             const timeStr = now.toLocaleTimeString('fr-FR');
             
-            doc.text(`Généré le ${dateStr} à ${timeStr}`, 20, 35);
+            doc.text(`Genere le ${dateStr} a ${timeStr}`, 20, 35);
 
             // Statistiques en boîtes colorées
             const totalReferences = inventaire.length;
@@ -1240,7 +1240,7 @@
             doc.setFont('helvetica', 'bold');
             doc.text(totalReferences.toString(), 50, 53, { align: 'center' });
             doc.setFontSize(10);
-            doc.text('RÉFÉRENCES', 50, 60, { align: 'center' });
+            doc.text('REFERENCES', 50, 60, { align: 'center' });
 
             // Boîte 2 - Articles
             doc.setFillColor(39, 174, 96);
@@ -1254,15 +1254,15 @@
             doc.roundedRect(160, 45, 60, 20, 3, 3, 'F');
             doc.text(bonEtat.toString(), 190, 53, { align: 'center' });
             doc.setFontSize(10);
-            doc.text('BON ÉTAT', 190, 60, { align: 'center' });
+            doc.text('BON ETAT', 190, 60, { align: 'center' });
 
             // Tableau principal
             const colonnes = [
                 { header: 'Type', dataKey: 'type' },
                 { header: 'Marque', dataKey: 'marque' },
-                { header: 'Modèle', dataKey: 'modele' },
-                { header: 'État', dataKey: 'etat' },
-                { header: 'Qté', dataKey: 'quantite' },
+                { header: 'Modele', dataKey: 'modele' },
+                { header: 'Etat', dataKey: 'etat' },
+                { header: 'Qte', dataKey: 'quantite' },
                 { header: 'Notes', dataKey: 'notes' }
             ];
 
@@ -1272,7 +1272,7 @@
                 modele: item.modele || '-',
                 etat: item.etat,
                 quantite: item.quantite || 1,
-                notes: item.notes || '-'
+                notes: (item.notes || '-').replace(/é/g, 'e').replace(/è/g, 'e').replace(/à/g, 'a').replace(/ç/g, 'c')
             }));
 
             doc.autoTable({
@@ -1329,8 +1329,8 @@
             doc.rect(0, pageHeight - 15, 297, 15, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(8);
-            doc.text('Inventaire IT Pro • Généré automatiquement', 20, pageHeight - 8);
-            doc.text(`Page 1 • ${totalItems} articles au total`, 250, pageHeight - 8);
+            doc.text('Inventaire IT Pro - Genere automatiquement', 20, pageHeight - 8);
+            doc.text(`Page 1 - ${totalItems} articles au total`, 250, pageHeight - 8);
 
             // Sauvegarder avec un nom personnalisé
             const fileName = `Inventaire-IT-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}.pdf`;
