@@ -449,12 +449,26 @@
             grid-template-columns: 2fr 2fr 1fr 120px 80px 100px;
             background: white;
             transition: all 0.2s ease;
+            cursor: move;
+            user-select: none;
         }
         
         .grid-row:hover {
             background: #f8f9fa;
             transform: translateX(5px);
             box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .grid-row.dragging {
+            opacity: 0.6;
+            transform: rotate(2deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .grid-row.drag-over {
+            border-top: 3px solid #3498db;
+            margin-top: 3px;
         }
         
         .grid-cell {
@@ -483,6 +497,37 @@
             color: #2c3e50;
             min-width: 35px;
             text-align: center;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            padding: 4px 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .quantity-display:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+        }
+        
+        .quantity-display:focus {
+            outline: none;
+            background: white;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            cursor: text;
+        }
+        
+        .drag-handle {
+            color: #bdc3c7;
+            font-size: 1.2em;
+            margin-right: 10px;
+            cursor: move;
+            transition: color 0.2s ease;
+        }
+        
+        .drag-handle:hover {
+            color: #3498db;
         }
         
         .state-badge {
@@ -1124,6 +1169,81 @@
             viderFormulaire();
         }
 
+        async function updateQuantite(id, nouvelleQuantite) {
+            const quantite = parseInt(nouvelleQuantite);
+            if (isNaN(quantite) || quantite < 1) {
+                afficherInventaire(); // Restaurer la valeur précédente
+                return;
+            }
+
+            const item = inventaire.find(i => i.id === id);
+            if (!item) return;
+
+            item.quantite = quantite;
+            item.timestamp = Date.now();
+            await sauvegarderInventaire();
+            updateStatistics();
+        }
+
+        // Variables pour le drag & drop
+        let draggedElement = null;
+        let draggedItemId = null;
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            draggedItemId = parseInt(e.target.dataset.itemId);
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', e.target.outerHTML);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            
+            const targetRow = e.target.closest('.grid-row');
+            if (targetRow && targetRow !== draggedElement) {
+                // Enlever la classe drag-over de tous les éléments
+                document.querySelectorAll('.grid-row').forEach(row => {
+                    row.classList.remove('drag-over');
+                });
+                targetRow.classList.add('drag-over');
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            
+            const targetRow = e.target.closest('.grid-row');
+            if (!targetRow || targetRow === draggedElement) return;
+            
+            const targetItemId = parseInt(targetRow.dataset.itemId);
+            
+            // Réorganiser l'array inventaire
+            const draggedIndex = inventaire.findIndex(item => item.id === draggedItemId);
+            const targetIndex = inventaire.findIndex(item => item.id === targetItemId);
+            
+            if (draggedIndex !== -1 && targetIndex !== -1) {
+                // Supprimer l'élément de sa position actuelle
+                const [draggedItem] = inventaire.splice(draggedIndex, 1);
+                // L'insérer à la nouvelle position
+                inventaire.splice(targetIndex, 0, draggedItem);
+                
+                // Sauvegarder et réafficher
+                sauvegarderInventaire();
+                afficherInventaire();
+            }
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.grid-row').forEach(row => {
+                row.classList.remove('drag-over');
+            });
+            draggedElement = null;
+            draggedItemId = null;
+        }
+
         async function modifierQuantite(id, changement) {
             const item = inventaire.find(i => i.id === id);
             if (!item) return;
@@ -1206,13 +1326,22 @@
                     </div>
             `;
 
-            itemsToShow.forEach(item => {
+            itemsToShow.forEach((item, index) => {
                 html += `
-                    <div class="grid-row">
+                    <div class="grid-row" 
+                         draggable="true" 
+                         data-item-id="${item.id}"
+                         ondragstart="handleDragStart(event)"
+                         ondragover="handleDragOver(event)"
+                         ondrop="handleDrop(event)"
+                         ondragend="handleDragEnd(event)">
                         <div class="grid-cell" data-label="Type & Marque">
-                            <div>
-                                <div style="font-weight: 600; color: #2c3e50;">${item.type}</div>
-                                <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque || '-'}</div>
+                            <div style="display: flex; align-items: center;">
+                                <span class="drag-handle">⋮⋮</span>
+                                <div>
+                                    <div style="font-weight: 600; color: #2c3e50;">${item.type}</div>
+                                    <div style="color: #7f8c8d; font-size: 0.9em;">${item.marque || '-'}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="grid-cell" data-label="Modèle">${item.modele || '-'}</div>
@@ -1222,7 +1351,13 @@
                         <div class="grid-cell" data-label="Quantité">
                             <div class="quantity-controls">
                                 <button onclick="modifierQuantite(${item.id}, -1)" class="btn-quantity decrease">-</button>
-                                <span class="quantity-display">${item.quantite || 1}</span>
+                                <input type="number" 
+                                       class="quantity-display" 
+                                       value="${item.quantite || 1}" 
+                                       min="1"
+                                       onchange="updateQuantite(${item.id}, this.value)"
+                                       onblur="this.style.cursor='pointer'"
+                                       onclick="this.style.cursor='text'; this.select()">
                                 <button onclick="modifierQuantite(${item.id}, 1)" class="btn-quantity increase">+</button>
                             </div>
                         </div>
