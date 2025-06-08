@@ -177,8 +177,8 @@
       "modele": "Y",
       "etat": "Neuf",
       "notes": "",
-      "quantite": 1,
-      "timestamp": 1749406654933
+      "quantite": 2,
+      "timestamp": 1749406813753
     },
     {
       "id": 33,
@@ -211,6 +211,6 @@
       "timestamp": 1749406666306
     }
   ],
-  "lastUpdate": 1749406810877,
+  "lastUpdate": 1749406813959,
   "version": "2.0"
 }
