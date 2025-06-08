@@ -1,5 +1,16 @@
 {
-  "items": [],
-  "lastUpdate": 1749404195020,
+  "items": [
+    {
+      "id": 1,
+      "type": "Écran",
+      "marque": "Dell",
+      "modele": "Incurvé",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749404455313
+    }
+  ],
+  "lastUpdate": 1749404455318,
   "version": "2.0"
 }
