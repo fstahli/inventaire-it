@@ -59,8 +59,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749405692704
+    },
+    {
+      "id": 9,
+      "type": "Écran",
+      "marque": "HDMI",
+      "modele": "",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 11,
+      "timestamp": 1749405707907
     }
   ],
-  "lastUpdate": 1749405693028,
+  "lastUpdate": 1749405708231,
   "version": "2.0"
 }
