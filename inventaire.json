@@ -107,8 +107,8 @@
       "modele": "HDMI",
       "etat": "Bon",
       "notes": "",
-      "quantite": 6,
-      "timestamp": 1749406747657
+      "quantite": 7,
+      "timestamp": 1749406748805
     },
     {
       "id": 26,
@@ -211,6 +211,6 @@
       "timestamp": 1749406666306
     }
   ],
-  "lastUpdate": 1749406747860,
+  "lastUpdate": 1749406749024,
   "version": "2.0"
 }
