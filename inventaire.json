@@ -39,8 +39,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749405597795
+    },
+    {
+      "id": 7,
+      "type": "Écran",
+      "marque": "Docking",
+      "modele": "",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 2,
+      "timestamp": 1749405622339
     }
   ],
-  "lastUpdate": 1749405597991,
+  "lastUpdate": 1749405622553,
   "version": "2.0"
 }
