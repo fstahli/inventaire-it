@@ -31,16 +31,6 @@
       "timestamp": 1749406687588
     },
     {
-      "id": 26,
-      "type": "Câble",
-      "marque": "",
-      "modele": "ALIMENTATION FR",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749406558509
-    },
-    {
       "id": 27,
       "type": "Casque",
       "marque": "Logitech",
@@ -61,6 +51,6 @@
       "timestamp": 1749406797610
     }
   ],
-  "lastUpdate": 1749408162055,
+  "lastUpdate": 1749408166401,
   "version": "2.0"
 }
