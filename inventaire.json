@@ -1,18 +1,5 @@
 {
-  "items": [
-    {
-      "id": 2,
-      "type": "Écran",
-      "marque": "Dell",
-      "modele": "Test",
-      "serie": "",
-      "etat": "Neuf",
-      "emplacement": "",
-      "date": "2025-06-08",
-      "notes": "",
-      "timestamp": 1749402988516
-    }
-  ],
-  "lastUpdate": 1749402988726,
+  "items": [],
+  "lastUpdate": 1749403259255,
   "version": "1.0"
 }
