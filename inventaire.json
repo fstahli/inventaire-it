@@ -109,8 +109,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749406530059
+    },
+    {
+      "id": 26,
+      "type": "Câble",
+      "marque": "",
+      "modele": "ALIMENTATION FR",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749406558509
     }
   ],
-  "lastUpdate": 1749406546345,
+  "lastUpdate": 1749406558712,
   "version": "2.0"
 }
