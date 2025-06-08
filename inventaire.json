@@ -7,8 +7,8 @@
       "modele": "G11",
       "etat": "Neuf",
       "notes": "",
-      "quantite": 2,
-      "timestamp": 1749406673043
+      "quantite": 1,
+      "timestamp": 1749407288235
     },
     {
       "id": 15,
@@ -211,6 +211,6 @@
       "timestamp": 1749406823205
     }
   ],
-  "lastUpdate": 1749406823397,
+  "lastUpdate": 1749407288239,
   "version": "2.0"
 }
