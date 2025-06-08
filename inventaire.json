@@ -61,16 +61,6 @@
       "timestamp": 1749406721929
     },
     {
-      "id": 23,
-      "type": "Câble",
-      "marque": "",
-      "modele": "USB-C SCREEN",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749406519396
-    },
-    {
       "id": 22,
       "type": "Alimentation",
       "marque": "",
@@ -79,6 +69,16 @@
       "notes": "",
       "quantite": 5,
       "timestamp": 1749406732423
+    },
+    {
+      "id": 23,
+      "type": "Câble",
+      "marque": "",
+      "modele": "USB-C SCREEN",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749406519396
     },
     {
       "id": 24,
@@ -191,6 +191,6 @@
       "timestamp": 1749406823205
     }
   ],
-  "lastUpdate": 1749408040546,
+  "lastUpdate": 1749408045590,
   "version": "2.0"
 }
