@@ -31,16 +31,6 @@
       "timestamp": 1749406687588
     },
     {
-      "id": 22,
-      "type": "Alimentation",
-      "marque": "",
-      "modele": "USB-C",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 5,
-      "timestamp": 1749406732423
-    },
-    {
       "id": 23,
       "type": "Câble",
       "marque": "",
@@ -91,6 +81,6 @@
       "timestamp": 1749406797610
     }
   ],
-  "lastUpdate": 1749408151270,
+  "lastUpdate": 1749408155364,
   "version": "2.0"
 }
