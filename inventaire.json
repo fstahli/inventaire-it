@@ -59,8 +59,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749408187627
+    },
+    {
+      "id": 37,
+      "type": "Alimentation",
+      "marque": "",
+      "modele": "usb",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749409693344
     }
   ],
-  "lastUpdate": 1749409677674,
+  "lastUpdate": 1749409693562,
   "version": "2.0"
 }
