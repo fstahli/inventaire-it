@@ -1,16 +1,5 @@
 {
-  "items": [
-    {
-      "id": 2,
-      "type": "Écran",
-      "marque": "Dell",
-      "modele": "Incurvé",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749404508326
-    }
-  ],
-  "lastUpdate": 1749405498124,
+  "items": [],
+  "lastUpdate": 1749405502400,
   "version": "2.0"
 }
