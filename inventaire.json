@@ -49,8 +49,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749405622339
+    },
+    {
+      "id": 8,
+      "type": "Écran",
+      "marque": "Curve",
+      "modele": "",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 2,
+      "timestamp": 1749405692704
     }
   ],
-  "lastUpdate": 1749405622553,
+  "lastUpdate": 1749405693028,
   "version": "2.0"
 }
