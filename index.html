@@ -715,19 +715,30 @@
             
             /* Améliorer les contrôles de quantité sur mobile */
             .quantity-controls {
-                gap: 8px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .mobile-quantity-stack {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
             }
             
             .btn-quantity {
                 width: 28px;
                 height: 28px;
                 font-size: 12px;
+                font-weight: bold;
             }
             
             .quantity-display {
-                min-width: 30px;
-                font-size: 1em;
-                padding: 2px 6px;
+                min-width: 40px;
+                font-size: 1.1em;
+                padding: 4px 8px;
+                text-align: center;
+                margin: 0 5px;
             }
             
             /* Badge d'état plus petit sur mobile */
@@ -1462,6 +1473,36 @@
             `;
 
             itemsToShow.forEach((item, index) => {
+                // Affichage différent pour mobile et desktop
+                const isMobile = window.innerWidth <= 768;
+                const quantityControls = isMobile ? `
+                    <div class="quantity-controls">
+                        <input type="number" 
+                               class="quantity-display" 
+                               value="${item.quantite || 1}" 
+                               min="1"
+                               onchange="updateQuantite(${item.id}, this.value)"
+                               onblur="this.style.cursor='pointer'"
+                               onclick="this.style.cursor='text'; this.select()">
+                        <div class="mobile-quantity-stack">
+                            <button onclick="modifierQuantite(${item.id}, 1)" class="btn-quantity increase">+</button>
+                            <button onclick="modifierQuantite(${item.id}, -1)" class="btn-quantity decrease">-</button>
+                        </div>
+                    </div>
+                ` : `
+                    <div class="quantity-controls">
+                        <button onclick="modifierQuantite(${item.id}, -1)" class="btn-quantity decrease">-</button>
+                        <input type="number" 
+                               class="quantity-display" 
+                               value="${item.quantite || 1}" 
+                               min="1"
+                               onchange="updateQuantite(${item.id}, this.value)"
+                               onblur="this.style.cursor='pointer'"
+                               onclick="this.style.cursor='text'; this.select()">
+                        <button onclick="modifierQuantite(${item.id}, 1)" class="btn-quantity increase">+</button>
+                    </div>
+                `;
+
                 html += `
                     <div class="grid-row" 
                          draggable="true" 
@@ -1484,17 +1525,7 @@
                             <span class="state-badge state-${item.etat.toLowerCase()}">${item.etat}</span>
                         </div>
                         <div class="grid-cell" data-label="Quantité">
-                            <div class="quantity-controls">
-                                <button onclick="modifierQuantite(${item.id}, -1)" class="btn-quantity decrease">-</button>
-                                <input type="number" 
-                                       class="quantity-display" 
-                                       value="${item.quantite || 1}" 
-                                       min="1"
-                                       onchange="updateQuantite(${item.id}, this.value)"
-                                       onblur="this.style.cursor='pointer'"
-                                       onclick="this.style.cursor='text'; this.select()">
-                                <button onclick="modifierQuantite(${item.id}, 1)" class="btn-quantity increase">+</button>
-                            </div>
+                            ${quantityControls}
                         </div>
                         <div class="grid-cell" data-label="Notes">${item.notes || '-'}</div>
                         <div class="grid-cell" data-label="Actions">
