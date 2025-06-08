@@ -147,8 +147,8 @@
       "modele": "US",
       "etat": "Bon",
       "notes": "",
-      "quantite": 1,
-      "timestamp": 1749406601091
+      "quantite": 2,
+      "timestamp": 1749406783474
     },
     {
       "id": 30,
@@ -211,6 +211,6 @@
       "timestamp": 1749406666306
     }
   ],
-  "lastUpdate": 1749406780803,
+  "lastUpdate": 1749406783668,
   "version": "2.0"
 }
