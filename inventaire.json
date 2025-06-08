@@ -31,16 +31,6 @@
       "timestamp": 1749405580773
     },
     {
-      "id": 6,
-      "type": "Écran",
-      "marque": "HP",
-      "modele": "G5",
-      "etat": "Moyen",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749405597795
-    },
-    {
       "id": 7,
       "type": "Écran",
       "marque": "Docking",
@@ -61,6 +51,6 @@
       "timestamp": 1749405707907
     }
   ],
-  "lastUpdate": 1749406331233,
+  "lastUpdate": 1749406343956,
   "version": "2.0"
 }
