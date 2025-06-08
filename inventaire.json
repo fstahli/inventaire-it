@@ -31,16 +31,6 @@
       "timestamp": 1749406687588
     },
     {
-      "id": 21,
-      "type": "Écran",
-      "marque": "",
-      "modele": "HDMI",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 11,
-      "timestamp": 1749406721929
-    },
-    {
       "id": 22,
       "type": "Alimentation",
       "marque": "",
@@ -101,6 +91,6 @@
       "timestamp": 1749406797610
     }
   ],
-  "lastUpdate": 1749408147617,
+  "lastUpdate": 1749408151270,
   "version": "2.0"
 }
