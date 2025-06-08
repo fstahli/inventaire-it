@@ -7,8 +7,8 @@
       "modele": "G9",
       "etat": "Bon",
       "notes": "",
-      "quantite": 8,
-      "timestamp": 1749410118547
+      "quantite": 7,
+      "timestamp": 1749410120521
     },
     {
       "id": 17,
@@ -81,6 +81,6 @@
       "timestamp": 1749409930099
     }
   ],
-  "lastUpdate": 1749410118750,
+  "lastUpdate": 1749410120710,
   "version": "2.0"
 }
