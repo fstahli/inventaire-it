@@ -121,16 +121,6 @@
       "timestamp": 1749406797610
     },
     {
-      "id": 34,
-      "type": "TONER",
-      "marque": "",
-      "modele": "C",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749406817425
-    },
-    {
       "id": 35,
       "type": "TONER",
       "marque": "",
@@ -141,6 +131,6 @@
       "timestamp": 1749406823205
     }
   ],
-  "lastUpdate": 1749408134039,
+  "lastUpdate": 1749408136720,
   "version": "2.0"
 }
