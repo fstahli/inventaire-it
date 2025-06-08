@@ -1,5 +1,18 @@
 {
-  "items": [],
-  "lastUpdate": 1749402600007,
+  "items": [
+    {
+      "id": 1,
+      "type": "Écran",
+      "marque": "Dell",
+      "modele": "Opti Plex",
+      "serie": "",
+      "etat": "Neuf",
+      "emplacement": "",
+      "date": "2025-06-08",
+      "notes": "",
+      "timestamp": 1749402625925
+    }
+  ],
+  "lastUpdate": 1749402626226,
   "version": "1.0"
 }
