@@ -89,8 +89,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749464278306
+    },
+    {
+      "id": 41,
+      "type": "Souris",
+      "marque": "",
+      "modele": "wireless",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749464292416
     }
   ],
-  "lastUpdate": 1749464278632,
+  "lastUpdate": 1749464292767,
   "version": "2.0"
 }
