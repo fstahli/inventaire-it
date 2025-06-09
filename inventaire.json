@@ -99,8 +99,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749464292416
+    },
+    {
+      "id": 42,
+      "type": "Souris",
+      "marque": "",
+      "modele": "usb",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749464297241
     }
   ],
-  "lastUpdate": 1749464292767,
+  "lastUpdate": 1749464297476,
   "version": "2.0"
 }
