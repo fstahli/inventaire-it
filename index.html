@@ -997,8 +997,9 @@
             // Masquer la section de configuration
             document.getElementById('config-section').style.display = 'none';
             
-            // Tester la connexion GitHub (gère ses propres statuts)
-            chargerDepuisGitHub();
+            // Tester la connexion GitHub ET synchroniser comme la version manuelle
+            updateStatusIndicator('online');
+            synchroniser();
             
             // Charger les types personnalisés
             chargerTypesEquipements();
