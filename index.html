@@ -1575,38 +1575,29 @@
             // Configuration des couleurs
             const primaryColor = [44, 62, 80];
             const secondaryColor = [52, 73, 94];
-            const accentColor = [52, 152, 219];
 
-            // En-tête compact
-            doc.setFillColor(...primaryColor);
-            doc.rect(0, 0, 210, 20, 'F');
-            
-            doc.setTextColor(255, 255, 255);
-            doc.setFontSize(18);
-            doc.setFont('helvetica', 'bold');
-            doc.text('INVENTAIRE IT', 15, 13);
-
-            // Statistiques en en-tête
+            // Statistiques
             const totalReferences = inventaire.length;
             const totalItems = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
             const bonEtat = inventaire.filter(item => item.etat === 'Neuf' || item.etat === 'Bon')
                 .reduce((sum, item) => sum + (item.quantite || 1), 0);
 
-            doc.setTextColor(255, 255, 255);
-            doc.setFontSize(8);
-            doc.setFont('helvetica', 'bold');
-            doc.text(`${totalReferences} REF | ${totalItems} ARTICLES | ${bonEtat} BON ETAT`, 120, 13);
-
-            // Date en compact
-            doc.setTextColor(...primaryColor);
-            doc.setFontSize(8);
-            doc.setFont('helvetica', 'normal');
+            // En-tête ultra-compact (12mm seulement)
+            doc.setFillColor(...primaryColor);
+            doc.rect(0, 0, 210, 12, 'F');
             
+            // Titre compact à gauche
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.text('INVENTAIRE IT', 15, 8);
+
+            // Date et stats compactes à droite
             const now = new Date();
             const dateStr = now.toLocaleDateString('fr-FR');
-            const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-            
-            doc.text(`Export du ${dateStr} a ${timeStr}`, 15, 28);
+            doc.setFontSize(7);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${dateStr} | ${totalReferences} REF | ${totalItems} ART | ${bonEtat} OK`, 120, 8);
 
             // Regrouper les articles par type pour optimiser l'affichage
             const articlesGroupes = {};
@@ -1622,7 +1613,7 @@
                 }
             });
 
-            // Tableau optimisé avec colonnes plus étroites
+            // Tableau ultra-optimisé
             const colonnes = [
                 { header: 'EQUIPEMENT', dataKey: 'equipement' },
                 { header: 'MARQUE/MODELE', dataKey: 'marqueModele' },
@@ -1642,84 +1633,78 @@
             doc.autoTable({
                 columns: colonnes,
                 body: donnees,
-                startY: 35,
-                margin: { left: 10, right: 10 },
+                startY: 18, // Commence juste après l'en-tête compact
+                margin: { left: 8, right: 8 },
                 tableWidth: 'auto',
                 styles: { 
-                    fontSize: 8,
-                    cellPadding: 2,
+                    fontSize: 7.5, // Police légèrement réduite mais lisible
+                    cellPadding: 1.5, // Padding minimal
                     lineColor: [220, 220, 220],
-                    lineWidth: 0.3,
+                    lineWidth: 0.2,
                     overflow: 'linebreak',
                     halign: 'left'
                 },
                 headStyles: { 
                     fillColor: primaryColor,
                     textColor: [255, 255, 255],
-                    fontSize: 8,
+                    fontSize: 7.5,
                     fontStyle: 'bold',
                     halign: 'center',
-                    cellPadding: 3
+                    cellPadding: 2
                 },
                 alternateRowStyles: { 
-                    fillColor: [250, 250, 250] 
+                    fillColor: [252, 252, 252] 
                 },
                 columnStyles: {
-                    0: { cellWidth: 45, fontStyle: 'bold' }, // Type en gras
-                    1: { cellWidth: 50 },
-                    2: { cellWidth: 20, halign: 'center', fontStyle: 'bold' }, // État en gras
-                    3: { cellWidth: 15, halign: 'center', fontStyle: 'bold' }, // Quantité en gras
-                    4: { cellWidth: 60, fontSize: 7 } // Notes plus petites
+                    0: { cellWidth: 42, fontStyle: 'bold' }, // Type en gras
+                    1: { cellWidth: 52, fontStyle: 'bold' }, // Marque/Modèle en gras
+                    2: { cellWidth: 18, halign: 'center', fontStyle: 'bold' }, // État en gras
+                    3: { cellWidth: 12, halign: 'center', fontStyle: 'bold' }, // Quantité en gras
+                    4: { cellWidth: 60, fontSize: 6.5 } // Notes plus petites
                 },
                 didDrawCell: function(data) {
-                    // Colorier les états avec des couleurs plus subtiles
+                    // Colorier les états avec des couleurs subtiles
                     if (data.column.dataKey === 'etat') {
                         const etat = data.cell.raw;
                         let color;
                         switch(etat) {
-                            case 'Neuf': color = [220, 245, 220]; break;
-                            case 'Bon': color = [220, 235, 255]; break;
-                            case 'Moyen': color = [255, 248, 220]; break;
-                            case 'Défaillant': color = [255, 230, 230]; break;
+                            case 'Neuf': color = [225, 248, 225]; break;
+                            case 'Bon': color = [225, 240, 255]; break;
+                            case 'Moyen': color = [255, 250, 225]; break;
+                            case 'Défaillant': color = [255, 235, 235]; break;
                             default: color = [255, 255, 255];
                         }
                         doc.setFillColor(...color);
                         doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
                         
                         // Texte de l'état en gras et centré
-                        doc.setTextColor(60, 60, 60);
+                        doc.setTextColor(50, 50, 50);
                         doc.setFont('helvetica', 'bold');
-                        doc.setFontSize(8);
-                        doc.text(etat, data.cell.x + data.cell.width / 2, data.cell.y + data.cell.height / 2 + 1.5, { align: 'center' });
-                    }
-                    
-                    // Mettre en gras les informations importantes
-                    if (data.column.dataKey === 'equipement' || data.column.dataKey === 'quantite') {
-                        doc.setFont('helvetica', 'bold');
+                        doc.setFontSize(7.5);
+                        doc.text(etat, data.cell.x + data.cell.width / 2, data.cell.y + data.cell.height / 2 + 1.2, { align: 'center' });
                     }
                 },
                 didDrawPage: function(data) {
-                    // Pied de page compact sur chaque page
+                    // Pied de page ultra-compact
                     const pageHeight = doc.internal.pageSize.getHeight();
                     const pageNumber = doc.internal.getNumberOfPages();
                     const currentPage = data.pageNumber;
                     
-                    // Ligne de séparation
-                    doc.setDrawColor(200, 200, 200);
-                    doc.line(10, pageHeight - 15, 200, pageHeight - 15);
+                    // Ligne de séparation fine
+                    doc.setDrawColor(220, 220, 220);
+                    doc.line(8, pageHeight - 8, 202, pageHeight - 8);
                     
-                    // Informations du pied de page
-                    doc.setTextColor(100, 100, 100);
-                    doc.setFontSize(7);
+                    // Informations minimales
+                    doc.setTextColor(120, 120, 120);
+                    doc.setFontSize(6);
                     doc.setFont('helvetica', 'normal');
-                    doc.text('Inventaire IT Pro', 15, pageHeight - 8);
-                    doc.text(`Page ${currentPage}`, 185, pageHeight - 8);
+                    doc.text('Inventaire IT Pro', 12, pageHeight - 4);
+                    doc.text(`${currentPage}/${pageNumber}`, 190, pageHeight - 4);
                     
-                    // Total sur la dernière page
+                    // Total centré sur la dernière page
                     if (currentPage === pageNumber) {
-                        const totalDisplay = `${totalItems} articles total`;
                         doc.setFont('helvetica', 'bold');
-                        doc.text(totalDisplay, 105 - (doc.getTextWidth(totalDisplay) / 2), pageHeight - 8);
+                        doc.text(`${totalItems} articles total`, 105, pageHeight - 4, { align: 'center' });
                     }
                 }
             });
