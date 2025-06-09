@@ -818,25 +818,31 @@
         </div>
         
         <div class="main-content">
-            <!-- Section de configuration GitHub (masquée automatiquement) -->
-            <div id="config-section" class="config-section" style="display: none;">
+            <!-- Section de configuration GitHub -->
+            <div id="config-section" class="config-section">
                 <h3>⚙️ Configuration GitHub</h3>
-                <p style="margin-bottom: 20px; color: #856404;">Configuration automatique activée pour fstahli/inventaire-it</p>
+                <p style="margin-bottom: 20px; color: #856404;">Configurez la synchronisation automatique avec GitHub :</p>
                 
                 <div class="form-row">
                     <div class="form-group">
+                        <label>Nom d'utilisateur GitHub</label>
+                        <input type="text" id="github-username" class="config-input" placeholder="votre-nom-utilisateur">
+                    </div>
+                    <div class="form-group">
                         <label>Nom du repository</label>
-                        <input type="text" id="github-repo" class="config-input" value="inventaire-it" readonly>
+                        <input type="text" id="github-repo" class="config-input" placeholder="inventaire-it">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label>Token d'accès GitHub</label>
-                    <input type="password" id="github-token" class="config-input" value="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" readonly>
-                    <small style="color: #27ae60; margin-top: 8px; display: block;">
-                        ✅ Configuration automatique activée
+                    <input type="password" id="github-token" class="config-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                    <small style="color: #856404; margin-top: 8px; display: block;">
+                        Créez un token sur GitHub: Settings → Developer settings → Personal access tokens
                     </small>
                 </div>
+                
+                <button onclick="saveGitHubConfig()" class="btn btn-primary">💾 Activer la synchronisation</button>
             </div>
             
             <div class="sync-info">
@@ -983,27 +989,21 @@
         });
 
         function loadGitHubConfig() {
-            // Configuration automatique avec vos paramètres
-            githubConfig = {
-                username: 'fstahli',
-                repo: 'inventaire-it',
-                token: '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'
-            };
-            
-            // Sauvegarder la configuration
-            localStorage.setItem('github-config', JSON.stringify(githubConfig));
-            isConfigured = true;
-            
-            // Masquer la section de configuration
-            document.getElementById('config-section').style.display = 'none';
-            
-            // REPRODUIRE EXACTEMENT ce qui marchait dans la version manuelle
-            updateStatusIndicator('online');
-            
-            // Appeler synchroniser() comme dans saveGitHubConfig() qui marchait
-            setTimeout(() => {
-                synchroniser();
-            }, 100);
+            const saved = localStorage.getItem('github-config');
+            if (saved) {
+                try {
+                    githubConfig = JSON.parse(saved);
+                    isConfigured = true;
+                    document.getElementById('config-section').style.display = 'none';
+                    updateStatusIndicator('online');
+                    chargerDepuisGitHub();
+                } catch (e) {
+                    console.error('Erreur configuration:', e);
+                }
+            } else {
+                updateStatusIndicator('offline');
+                chargerDepuisLocal();
+            }
             
             // Charger les types personnalisés
             chargerTypesEquipements();
@@ -1570,231 +1570,115 @@
             }
 
             const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4'); // Portrait pour plus d'articles
+            const doc = new jsPDF('l', 'mm', 'a4'); // Paysage pour plus d'espace
 
             // Configuration des couleurs
             const primaryColor = [44, 62, 80];
             const secondaryColor = [52, 73, 94];
             const accentColor = [52, 152, 219];
 
-            // En-tête compact
+            // En-tête avec titre simplifié
             doc.setFillColor(...primaryColor);
-            doc.rect(0, 0, 210, 20, 'F'); // Plus petit en hauteur
+            doc.rect(0, 0, 297, 25, 'F');
             
             doc.setTextColor(255, 255, 255);
-            doc.setFontSize(18); // Plus petit
+            doc.setFontSize(24);
             doc.setFont('helvetica', 'bold');
-            doc.text('INVENTAIRE IT', 15, 13);
+            doc.text('INVENTAIRE IT', 20, 17);
 
-            // Statistiques compactes à droite de l'en-tête
-            const totalItems = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
-            const totalReferences = inventaire.length;
-            const bonEtat = inventaire.filter(item => item.etat === 'Neuf' || item.etat === 'Bon')
-                .reduce((sum, item) => sum + (item.quantite || 1), 0);
-
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'bold'); // Statistiques en gras
-            doc.text(`${totalReferences} ref. | ${totalItems} art. | ${bonEtat} en bon etat`, 135, 8);
-            
-            // Date compacte
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('fr-FR');
-            const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-            doc.setFontSize(9);
+            // Date du rapport
+            doc.setTextColor(...primaryColor);
+            doc.setFontSize(12);
             doc.setFont('helvetica', 'normal');
-            doc.text(`${dateStr} ${timeStr}`, 155, 15);
+            
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('fr-FR', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            }).replace(/é/g, 'e').replace(/è/g, 'e').replace(/à/g, 'a').replace(/ç/g, 'c');
+            const timeStr = now.toLocaleTimeString('fr-FR');
+            
+            doc.text(`Genere le ${dateStr} a ${timeStr}`, 20, 35);
 
-            // Préparation des données avec optimisation de l'espace
-            const donnees = inventaire.map(item => {
-                // Combinaison intelligent type + marque pour économiser l'espace
-                let equipement = item.type;
-                if (item.marque && item.marque.trim()) {
-                    equipement += ` (${item.marque})`;
-                }
-                
-                // Modèle tronqué si trop long
-                let modele = item.modele || '-';
-                if (modele.length > 20) {
-                    modele = modele.substring(0, 17) + '...';
-                }
-                
-                // Notes tronquées si trop longues
-                let notes = item.notes || '-';
-                if (notes.length > 25) {
-                    notes = notes.substring(0, 22) + '...';
-                }
-                
-                // États raccourcis
-                const etatsRaccourcis = {
-                    'Neuf': 'Neuf',
-                    'Bon': 'Bon', 
-                    'Moyen': 'Moy.',
-                    'Défaillant': 'Def.'
-                };
-
-                return {
-                    equipement: equipement,
-                    modele: modele,
-                    etat: etatsRaccourcis[item.etat] || item.etat,
-                    quantite: item.quantite || 1,
-                    notes: notes.replace(/é/g, 'e').replace(/è/g, 'e').replace(/à/g, 'a').replace(/ç/g, 'c')
-                };
-            });
-
-            // Définition des colonnes optimisées
+            // Tableau principal
             const colonnes = [
-                { header: 'Equipement', dataKey: 'equipement' },
+                { header: 'Type', dataKey: 'type' },
+                { header: 'Marque', dataKey: 'marque' },
                 { header: 'Modele', dataKey: 'modele' },
                 { header: 'Etat', dataKey: 'etat' },
                 { header: 'Qte', dataKey: 'quantite' },
                 { header: 'Notes', dataKey: 'notes' }
             ];
 
-            // Tableau principal avec optimisations
+            const donnees = inventaire.map(item => ({
+                type: item.type,
+                marque: item.marque || '-',
+                modele: item.modele || '-',
+                etat: item.etat,
+                quantite: item.quantite || 1,
+                notes: (item.notes || '-').replace(/é/g, 'e').replace(/è/g, 'e').replace(/à/g, 'a').replace(/ç/g, 'c')
+            }));
+
             doc.autoTable({
                 columns: colonnes,
                 body: donnees,
-                startY: 25, // Plus haut sur la page
-                margin: { left: 10, right: 10 }, // Marges réduites
+                startY: 50,
                 styles: { 
-                    fontSize: 9, // Taille lisible conservée
-                    cellPadding: 3, // Padding correct pour la lisibilité
+                    fontSize: 9,
+                    cellPadding: 4,
                     lineColor: [230, 230, 230],
-                    lineWidth: 0.3,
-                    overflow: 'linebreak', // Retour à la ligne automatique
-                    valign: 'middle',
-                    fontStyle: 'normal'
+                    lineWidth: 0.5
                 },
                 headStyles: { 
                     fillColor: primaryColor,
                     textColor: [255, 255, 255],
                     fontSize: 10,
                     fontStyle: 'bold',
-                    halign: 'center',
-                    cellPadding: 4
+                    halign: 'center'
                 },
                 alternateRowStyles: { 
                     fillColor: [248, 249, 250] 
                 },
                 columnStyles: {
-                    0: { cellWidth: 65, halign: 'left', fontStyle: 'bold' },   // Équipement en gras
-                    1: { cellWidth: 38, halign: 'left' },   // Modèle
-                    2: { cellWidth: 18, halign: 'center', fontStyle: 'bold' }, // État en gras
-                    3: { cellWidth: 14, halign: 'center', fontStyle: 'bold' }, // Quantité en gras
-                    4: { cellWidth: 45, halign: 'left' }    // Notes
+                    0: { cellWidth: 35 },
+                    1: { cellWidth: 40 },
+                    2: { cellWidth: 45 },
+                    3: { cellWidth: 25, halign: 'center' },
+                    4: { cellWidth: 20, halign: 'center' },
+                    5: { cellWidth: 60 }
                 },
-                rowPageBreak: 'avoid', // Évite de couper les lignes entre les pages
-                showHead: 'everyPage', // En-tête sur chaque page
                 didDrawCell: function(data) {
-                    // Colorier les états avec des couleurs plus subtiles
+                    // Colorier les états
                     if (data.column.dataKey === 'etat') {
                         const etat = data.cell.raw;
                         let color;
-                        switch(data.cell.text[0]) {
+                        switch(etat) {
                             case 'Neuf': color = [212, 237, 218]; break;
                             case 'Bon': color = [204, 229, 255]; break;
-                            case 'Moy.': color = [255, 243, 205]; break;
-                            case 'Def.': color = [248, 215, 218]; break;
+                            case 'Moyen': color = [255, 243, 205]; break;
+                            case 'Défaillant': color = [248, 215, 218]; break;
                             default: color = [255, 255, 255];
                         }
                         doc.setFillColor(...color);
                         doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
-                        
-                        // Texte centré
                         doc.setTextColor(44, 62, 80);
-                        doc.setFontSize(9);
-                        doc.setFont('helvetica', 'bold'); // État en gras
-                        doc.text(data.cell.text[0], data.cell.x + data.cell.width / 2, data.cell.y + data.cell.height / 2 + 1, { align: 'center' });
+                        doc.text(etat, data.cell.x + data.cell.width / 2, data.cell.y + data.cell.height / 2 + 1, { align: 'center' });
                     }
-                },
-                didDrawPage: function(data) {
-                    // Pied de page sur chaque page
-                    const pageHeight = doc.internal.pageSize.getHeight();
-                    const pageWidth = doc.internal.pageSize.getWidth();
-                    
-                    doc.setFillColor(...secondaryColor);
-                    doc.rect(0, pageHeight - 12, pageWidth, 12, 'F');
-                    
-                    doc.setTextColor(255, 255, 255);
-                    doc.setFontSize(8);
-                    doc.setFont('helvetica', 'bold');
-                    doc.text('Inventaire IT Pro', 10, pageHeight - 6);
-                    
-                    // Numéro de page
-                    const pageNum = data.pageNumber;
-                    const totalPages = doc.internal.getNumberOfPages();
-                    doc.setFont('helvetica', 'normal');
-                    doc.text(`Page ${pageNum}/${totalPages}`, pageWidth - 30, pageHeight - 6);
                 }
             });
 
-            // Résumé en fin de document si plus d'une page
-            if (doc.internal.getNumberOfPages() > 1) {
-                doc.addPage();
-                
-                // En-tête résumé
-                doc.setFillColor(...accentColor);
-                doc.rect(0, 0, 210, 15, 'F');
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(14);
-                doc.setFont('helvetica', 'bold');
-                doc.text('RESUME EXECUTIF', 15, 10);
-
-                // Statistiques détaillées
-                doc.setTextColor(...primaryColor);
-                doc.setFontSize(12);
-                doc.setFont('helvetica', 'normal');
-                
-                let y = 30;
-                doc.text(`Total des references : ${totalReferences}`, 20, y);
-                y += 8;
-                doc.text(`Total des articles : ${totalItems}`, 20, y);
-                y += 8;
-                doc.text(`Articles en bon etat : ${bonEtat} (${Math.round(bonEtat/totalItems*100)}%)`, 20, y);
-                y += 15;
-
-                // Répartition par état
-                doc.setFont('helvetica', 'bold');
-                doc.text('Repartition par etat :', 20, y);
-                y += 10;
-                
-                doc.setFont('helvetica', 'normal');
-                const etats = ['Neuf', 'Bon', 'Moyen', 'Défaillant'];
-                etats.forEach(etat => {
-                    const count = inventaire.filter(item => item.etat === etat)
-                        .reduce((sum, item) => sum + (item.quantite || 1), 0);
-                    if (count > 0) {
-                        doc.text(`- ${etat} : ${count} articles (${Math.round(count/totalItems*100)}%)`, 25, y);
-                        y += 6;
-                    }
-                });
-
-                y += 10;
-
-                // Top 5 des équipements les plus nombreux
-                doc.setFont('helvetica', 'bold');
-                doc.text('Top 5 des equipements :', 20, y);
-                y += 10;
-                
-                const equipementStats = {};
-                inventaire.forEach(item => {
-                    const key = item.type;
-                    if (!equipementStats[key]) {
-                        equipementStats[key] = 0;
-                    }
-                    equipementStats[key] += item.quantite || 1;
-                });
-                
-                const topEquipements = Object.entries(equipementStats)
-                    .sort(([,a], [,b]) => b - a)
-                    .slice(0, 5);
-                
-                doc.setFont('helvetica', 'normal');
-                topEquipements.forEach(([type, count], index) => {
-                    doc.text(`${index + 1}. ${type} : ${count} articles`, 25, y);
-                    y += 6;
-                });
-            }
+            // Pied de page simplifié
+            const pageHeight = doc.internal.pageSize.getHeight();
+            doc.setFillColor(...secondaryColor);
+            doc.rect(0, pageHeight - 15, 297, 15, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(8);
+            doc.text('Inventaire IT', 20, pageHeight - 8);
+            
+            const totalItems = inventaire.reduce((sum, item) => sum + (item.quantite || 1), 0);
+            doc.text(`${totalItems} articles au total`, 250, pageHeight - 8);
 
             // Sauvegarder avec un nom personnalisé
             const fileName = `Inventaire-IT-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}.pdf`;
@@ -1807,17 +1691,4 @@
         };
     </script>
 </body>
-</html>                    <div class="form-group">
-                        <label>Nom du repository</label>
-                        <input type="text" id="github-repo" class="config-input" value="inventaire-it" readonly>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Token d'accès GitHub</label>
-                    <input type="password" id="github-token" class="config-input" value="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" readonly>
-                    <small style="color: #27ae60; margin-top: 8px; display: block;">
-                        ✅ Configuration automatique activée
-                    </small>
-                </div>
-            </div>
+</html>
