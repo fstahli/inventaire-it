@@ -79,8 +79,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749464263095
+    },
+    {
+      "id": 40,
+      "type": "Imprimante",
+      "marque": "",
+      "modele": "scan",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749464278306
     }
   ],
-  "lastUpdate": 1749464263351,
+  "lastUpdate": 1749464278632,
   "version": "2.0"
 }
