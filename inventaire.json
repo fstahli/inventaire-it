@@ -119,8 +119,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749464341611
+    },
+    {
+      "id": 44,
+      "type": "Toner",
+      "marque": "",
+      "modele": "y",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749464345863
     }
   ],
-  "lastUpdate": 1749464341916,
+  "lastUpdate": 1749464346056,
   "version": "2.0"
 }
