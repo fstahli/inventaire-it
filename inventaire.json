@@ -199,8 +199,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749536727138
+    },
+    {
+      "id": 62,
+      "type": "Câble",
+      "marque": "",
+      "modele": "USB-C SCREEN",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749536878863
     }
   ],
-  "lastUpdate": 1749536866543,
+  "lastUpdate": 1749536879041,
   "version": "2.0"
 }
