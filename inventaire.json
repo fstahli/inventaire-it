@@ -61,16 +61,6 @@
       "timestamp": 1749406797610
     },
     {
-      "id": 40,
-      "type": "Imprimante",
-      "marque": "",
-      "modele": "scan",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749464278306
-    },
-    {
       "id": 41,
       "type": "Souris",
       "marque": "",
@@ -121,6 +111,6 @@
       "timestamp": 1749536540342
     }
   ],
-  "lastUpdate": 1749536551102,
+  "lastUpdate": 1749536554337,
   "version": "2.0"
 }
