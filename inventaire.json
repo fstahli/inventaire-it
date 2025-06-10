@@ -99,8 +99,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749537000245
+    },
+    {
+      "id": 66,
+      "type": "Écran",
+      "marque": "",
+      "modele": "CURVE",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749537005925
     }
   ],
-  "lastUpdate": 1749537000445,
+  "lastUpdate": 1749537006131,
   "version": "2.0"
 }
