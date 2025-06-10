@@ -119,8 +119,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749536628671
+    },
+    {
+      "id": 53,
+      "type": "Câble",
+      "marque": "",
+      "modele": "ALIM FR",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749536639397
     }
   ],
-  "lastUpdate": 1749536628879,
+  "lastUpdate": 1749536639588,
   "version": "2.0"
 }
