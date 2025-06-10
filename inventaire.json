@@ -71,16 +71,6 @@
       "timestamp": 1749464292416
     },
     {
-      "id": 42,
-      "type": "Souris",
-      "marque": "",
-      "modele": "usb",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749464297241
-    },
-    {
       "id": 47,
       "type": "Écran",
       "marque": "",
@@ -111,6 +101,6 @@
       "timestamp": 1749536540342
     }
   ],
-  "lastUpdate": 1749536554337,
+  "lastUpdate": 1749536558667,
   "version": "2.0"
 }
