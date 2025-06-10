@@ -139,8 +139,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749537102556
+    },
+    {
+      "id": 73,
+      "type": "Câble",
+      "marque": "",
+      "modele": "HDMI",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749537108451
     }
   ],
-  "lastUpdate": 1749537102752,
+  "lastUpdate": 1749537108645,
   "version": "2.0"
 }
