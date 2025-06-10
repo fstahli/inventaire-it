@@ -61,16 +61,6 @@
       "timestamp": 1749406797610
     },
     {
-      "id": 57,
-      "type": "Souris",
-      "marque": "",
-      "modele": "USB",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749536694623
-    },
-    {
       "id": 58,
       "type": "TONER",
       "marque": "Y",
@@ -121,6 +111,6 @@
       "timestamp": 1749536878863
     }
   ],
-  "lastUpdate": 1749536927000,
+  "lastUpdate": 1749536929166,
   "version": "2.0"
 }
