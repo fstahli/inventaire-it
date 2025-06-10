@@ -41,16 +41,6 @@
       "timestamp": 1749406687588
     },
     {
-      "id": 50,
-      "type": "Alimentation",
-      "marque": "",
-      "modele": "USB-C",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749536596721
-    },
-    {
       "id": 27,
       "type": "Casque",
       "marque": "Logitech",
@@ -181,6 +171,6 @@
       "timestamp": 1749536878863
     }
   ],
-  "lastUpdate": 1749536904932,
+  "lastUpdate": 1749536910016,
   "version": "2.0"
 }
