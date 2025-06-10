@@ -101,16 +101,6 @@
       "timestamp": 1749537000245
     },
     {
-      "id": 66,
-      "type": "Écran",
-      "marque": "",
-      "modele": "CURVE",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749537005925
-    },
-    {
       "id": 67,
       "type": "Écran",
       "marque": "",
@@ -131,6 +121,6 @@
       "timestamp": 1749537037776
     }
   ],
-  "lastUpdate": 1749537037977,
+  "lastUpdate": 1749537043165,
   "version": "2.0"
 }
