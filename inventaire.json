@@ -51,16 +51,6 @@
       "timestamp": 1749406773977
     },
     {
-      "id": 30,
-      "type": "Souris",
-      "marque": "Logitech",
-      "modele": "WIRELESS",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 9,
-      "timestamp": 1749406797610
-    },
-    {
       "id": 58,
       "type": "TONER",
       "marque": "Y",
@@ -111,6 +101,6 @@
       "timestamp": 1749536878863
     }
   ],
-  "lastUpdate": 1749536929166,
+  "lastUpdate": 1749536931695,
   "version": "2.0"
 }
