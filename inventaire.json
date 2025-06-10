@@ -101,16 +101,6 @@
       "timestamp": 1749406797610
     },
     {
-      "id": 51,
-      "type": "Câble",
-      "marque": "",
-      "modele": "USB-C",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749536619352
-    },
-    {
       "id": 52,
       "type": "Câble",
       "marque": "",
@@ -211,6 +201,6 @@
       "timestamp": 1749536727138
     }
   ],
-  "lastUpdate": 1749536854374,
+  "lastUpdate": 1749536866543,
   "version": "2.0"
 }
