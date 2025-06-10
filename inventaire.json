@@ -61,16 +61,6 @@
       "timestamp": 1749406797610
     },
     {
-      "id": 53,
-      "type": "Câble",
-      "marque": "",
-      "modele": "ALIM FR",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749536639397
-    },
-    {
       "id": 54,
       "type": "Clavier",
       "marque": "",
@@ -161,6 +151,6 @@
       "timestamp": 1749536878863
     }
   ],
-  "lastUpdate": 1749536917448,
+  "lastUpdate": 1749536920069,
   "version": "2.0"
 }
