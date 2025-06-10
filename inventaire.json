@@ -109,8 +109,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749464297241
+    },
+    {
+      "id": 47,
+      "type": "Écran",
+      "marque": "",
+      "modele": "DOCKING",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749536523706
     }
   ],
-  "lastUpdate": 1749536492091,
+  "lastUpdate": 1749536523994,
   "version": "2.0"
 }
