@@ -69,18 +69,8 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1749536719404
-    },
-    {
-      "id": 61,
-      "type": "TONER",
-      "marque": "",
-      "modele": "K",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749536727138
     }
   ],
-  "lastUpdate": 1749536957495,
+  "lastUpdate": 1749536960350,
   "version": "2.0"
 }
