@@ -199,8 +199,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749641345952
+    },
+    {
+      "id": 86,
+      "type": "Clavier",
+      "marque": "CH",
+      "modele": "USB",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 8,
+      "timestamp": 1749642730687
     }
   ],
-  "lastUpdate": 1749642714261,
+  "lastUpdate": 1749642730926,
   "version": "2.0"
 }
