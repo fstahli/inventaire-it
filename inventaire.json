@@ -111,6 +111,16 @@
       "timestamp": 1749629184533
     },
     {
+      "id": 78,
+      "type": "Écran",
+      "marque": "",
+      "modele": "CURVE",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 2,
+      "timestamp": 1749628992639
+    },
+    {
       "id": 71,
       "type": "Alimentation",
       "marque": "",
@@ -171,16 +181,6 @@
       "timestamp": 1749630121044
     },
     {
-      "id": 78,
-      "type": "Écran",
-      "marque": "",
-      "modele": "CURVE",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749628992639
-    },
-    {
       "id": 79,
       "type": "Souris",
       "marque": "",
@@ -221,6 +221,6 @@
       "timestamp": 1749630965228
     }
   ],
-  "lastUpdate": 1749640927712,
+  "lastUpdate": 1749640957369,
   "version": "2.0"
 }
