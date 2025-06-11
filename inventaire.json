@@ -209,8 +209,18 @@
       "notes": "",
       "quantite": 8,
       "timestamp": 1749642730687
+    },
+    {
+      "id": 88,
+      "type": "Clavier",
+      "marque": "USA",
+      "modele": "USB",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749642751947
     }
   ],
-  "lastUpdate": 1749642743673,
+  "lastUpdate": 1749642752139,
   "version": "2.0"
 }
