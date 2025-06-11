@@ -161,16 +161,6 @@
       "timestamp": 1749630060661
     },
     {
-      "id": 76,
-      "type": "Souris",
-      "marque": "LOGITECH",
-      "modele": "WIRELESS",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 9,
-      "timestamp": 1749537207447
-    },
-    {
       "id": 77,
       "type": "Souris",
       "marque": "",
@@ -191,6 +181,6 @@
       "timestamp": 1749628992639
     }
   ],
-  "lastUpdate": 1749630060897,
+  "lastUpdate": 1749630112318,
   "version": "2.0"
 }
