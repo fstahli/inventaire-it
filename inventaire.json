@@ -11,16 +11,6 @@
       "timestamp": 1749630902830
     },
     {
-      "id": 81,
-      "type": "Ordinateur",
-      "marque": "",
-      "modele": "G10",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749630957459
-    },
-    {
       "id": 16,
       "type": "Ordinateur",
       "marque": "HP",
@@ -211,6 +201,6 @@
       "timestamp": 1749630222190
     }
   ],
-  "lastUpdate": 1749641346179,
+  "lastUpdate": 1749641381929,
   "version": "2.0"
 }
