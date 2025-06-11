@@ -209,18 +209,8 @@
       "notes": "",
       "quantite": 8,
       "timestamp": 1749630222190
-    },
-    {
-      "id": 82,
-      "type": "Ordinateur",
-      "marque": "",
-      "modele": "G5",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1749630965228
     }
   ],
-  "lastUpdate": 1749641002690,
+  "lastUpdate": 1749641011353,
   "version": "2.0"
 }
