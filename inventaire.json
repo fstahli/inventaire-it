@@ -107,8 +107,8 @@
       "modele": "CURVE",
       "etat": "Bon",
       "notes": "",
-      "quantite": 2,
-      "timestamp": 1749628939566
+      "quantite": 1,
+      "timestamp": 1749628950174
     },
     {
       "id": 70,
@@ -191,6 +191,6 @@
       "timestamp": 1749537239013
     }
   ],
-  "lastUpdate": 1749628939872,
+  "lastUpdate": 1749628950409,
   "version": "2.0"
 }
