@@ -189,8 +189,18 @@
       "notes": "",
       "quantite": 8,
       "timestamp": 1749630139095
+    },
+    {
+      "id": 80,
+      "type": "Clavier",
+      "marque": "",
+      "modele": "Usb",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 8,
+      "timestamp": 1749630222190
     }
   ],
-  "lastUpdate": 1749630139302,
+  "lastUpdate": 1749630222534,
   "version": "2.0"
 }
