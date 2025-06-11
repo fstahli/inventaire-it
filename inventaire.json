@@ -199,8 +199,18 @@
       "notes": "",
       "quantite": 8,
       "timestamp": 1749630222190
+    },
+    {
+      "id": 83,
+      "type": "Écran",
+      "marque": "HP",
+      "modele": "G10",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749641393284
     }
   ],
-  "lastUpdate": 1749641381929,
+  "lastUpdate": 1749641393469,
   "version": "2.0"
 }
