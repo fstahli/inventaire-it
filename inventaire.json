@@ -199,8 +199,18 @@
       "notes": "",
       "quantite": 8,
       "timestamp": 1749630222190
+    },
+    {
+      "id": 81,
+      "type": "Ordinateur",
+      "marque": "",
+      "modele": "G10",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1749630957459
     }
   ],
-  "lastUpdate": 1749630929316,
+  "lastUpdate": 1749630957668,
   "version": "2.0"
 }
