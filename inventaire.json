@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": 84,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G11",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 2,
-      "timestamp": 1749715285220
-    },
-    {
       "id": 85,
       "type": "Ordinateur",
       "marque": "HP",
@@ -211,6 +201,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1750075156310,
+  "lastUpdate": 1750075161121,
   "version": "2.0"
 }
