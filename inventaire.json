@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": 89,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G11 x360",
-      "etat": "Bon",
-      "notes": "Tactile - Clavier azerty",
-      "quantite": 1,
-      "timestamp": 1749715317593
-    },
-    {
       "id": 84,
       "type": "Ordinateur",
       "marque": "HP",
@@ -221,6 +211,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1750075141422,
+  "lastUpdate": 1750075156310,
   "version": "2.0"
 }
