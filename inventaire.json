@@ -41,16 +41,6 @@
       "timestamp": 1749640969137
     },
     {
-      "id": 92,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G6 X360",
-      "etat": "Bon",
-      "notes": "Tactile, clavier AZERTY",
-      "quantite": 1,
-      "timestamp": 1750149503024
-    },
-    {
       "id": 18,
       "type": "Ordinateur",
       "marque": "HP",
@@ -221,6 +211,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1750149562575,
+  "lastUpdate": 1750149613223,
   "version": "2.0"
 }
