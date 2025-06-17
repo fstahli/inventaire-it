@@ -157,8 +157,8 @@
       "modele": "USB",
       "etat": "Neuf",
       "notes": "",
-      "quantite": 8,
-      "timestamp": 1749630139095
+      "quantite": 7,
+      "timestamp": 1750154178301
     },
     {
       "id": 86,
@@ -221,6 +221,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1750154174443,
+  "lastUpdate": 1750154178489,
   "version": "2.0"
 }
