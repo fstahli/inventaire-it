@@ -7,8 +7,8 @@
       "modele": "G11",
       "etat": "Bon",
       "notes": "Aspect extérieur avec des défauts esthétiques (traces,  chocs légers).",
-      "quantite": 2,
-      "timestamp": 1750938955775
+      "quantite": 1,
+      "timestamp": 1750938998812
     },
     {
       "id": 85,
@@ -221,6 +221,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1750938977180,
+  "lastUpdate": 1750938999024,
   "version": "2.0"
 }
