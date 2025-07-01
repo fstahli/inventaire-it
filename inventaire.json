@@ -37,8 +37,8 @@
       "modele": "G8",
       "etat": "Bon",
       "notes": "",
-      "quantite": 2,
-      "timestamp": 1751359968671
+      "quantite": 1,
+      "timestamp": 1751364254216
     },
     {
       "id": 18,
@@ -231,6 +231,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1751359968861,
+  "lastUpdate": 1751364254542,
   "version": "2.0"
 }
