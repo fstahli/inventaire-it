@@ -219,8 +219,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749641345952
+    },
+    {
+      "id": 98,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G11",
+      "etat": "Bon",
+      "notes": "Aspect extérieur avec des défauts esthétiques (traces, chocs légers).",
+      "quantite": 1,
+      "timestamp": 1751353072481
     }
   ],
-  "lastUpdate": 1751353046568,
+  "lastUpdate": 1751353072675,
   "version": "2.0"
 }
