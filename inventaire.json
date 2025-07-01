@@ -219,8 +219,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749641345952
+    },
+    {
+      "id": 97,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G6",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1751352981849
     }
   ],
-  "lastUpdate": 1751352920486,
+  "lastUpdate": 1751352982188,
   "version": "2.0"
 }
