@@ -1,16 +1,6 @@
 {
   "items": [
     {
-      "id": 98,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G11",
-      "etat": "Bon",
-      "notes": "Aspect extérieur avec des défauts esthétiques (traces, chocs légers).",
-      "quantite": 1,
-      "timestamp": 1751353072481
-    },
-    {
       "id": 85,
       "type": "Ordinateur",
       "marque": "HP",
@@ -231,6 +221,6 @@
       "timestamp": 1749641345952
     }
   ],
-  "lastUpdate": 1752491148338,
+  "lastUpdate": 1752491165642,
   "version": "2.0"
 }
