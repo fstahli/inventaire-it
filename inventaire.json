@@ -17,8 +17,8 @@
       "modele": "G8",
       "etat": "Bon",
       "notes": "",
-      "quantite": 2,
-      "timestamp": 1753166397807
+      "quantite": 1,
+      "timestamp": 1753166398309
     },
     {
       "id": 100,
@@ -219,8 +219,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1749641345952
+    },
+    {
+      "id": 102,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G10",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1753167082440
     }
   ],
-  "lastUpdate": 1753166398009,
+  "lastUpdate": 1753167082703,
   "version": "2.0"
 }
