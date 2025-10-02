@@ -199,18 +199,8 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1758023738641
-    },
-    {
-      "id": 103,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G11",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1759411745970
     }
   ],
-  "lastUpdate": 1759411746194,
+  "lastUpdate": 1759411755985,
   "version": "2.0"
 }
