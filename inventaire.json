@@ -87,8 +87,8 @@
       "modele": "USB-C SCREEN",
       "etat": "Bon",
       "notes": "",
-      "quantite": 5,
-      "timestamp": 1759412341345
+      "quantite": 4,
+      "timestamp": 1759412343555
     },
     {
       "id": 73,
@@ -201,6 +201,6 @@
       "timestamp": 1758023738641
     }
   ],
-  "lastUpdate": 1759412341557,
+  "lastUpdate": 1759412343775,
   "version": "2.0"
 }
