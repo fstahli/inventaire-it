@@ -209,8 +209,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1758023738641
+    },
+    {
+      "id": 102,
+      "type": "Ordinateur",
+      "marque": "HP",
+      "modele": "G1i",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 27,
+      "timestamp": 1759411342809
     }
   ],
-  "lastUpdate": 1759411227078,
+  "lastUpdate": 1759411343213,
   "version": "2.0"
 }
