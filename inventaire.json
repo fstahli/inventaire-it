@@ -199,8 +199,18 @@
       "notes": "",
       "quantite": 2,
       "timestamp": 1758023738641
+    },
+    {
+      "id": 106,
+      "type": "Câble",
+      "marque": "ALIMENTATION CH",
+      "modele": "",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 10,
+      "timestamp": 1759412870431
     }
   ],
-  "lastUpdate": 1759412360397,
+  "lastUpdate": 1759412870727,
   "version": "2.0"
 }
