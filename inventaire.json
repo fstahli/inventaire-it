@@ -61,16 +61,6 @@
       "timestamp": 1752491246014
     },
     {
-      "id": 94,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G3 X360",
-      "etat": "Bon",
-      "notes": "Tactile, clavier AZERTY",
-      "quantite": 1,
-      "timestamp": 1750149707694
-    },
-    {
       "id": 65,
       "type": "Écran",
       "marque": "",
@@ -221,6 +211,6 @@
       "timestamp": 1758023738641
     }
   ],
-  "lastUpdate": 1759411705826,
+  "lastUpdate": 1759411718127,
   "version": "2.0"
 }
