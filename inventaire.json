@@ -61,16 +61,6 @@
       "timestamp": 1759411828119
     },
     {
-      "id": 65,
-      "type": "Écran",
-      "marque": "",
-      "modele": "DOCKING",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 4,
-      "timestamp": 1752491915677
-    },
-    {
       "id": 70,
       "type": "Écran",
       "marque": "",
@@ -211,6 +201,6 @@
       "timestamp": 1758023738641
     }
   ],
-  "lastUpdate": 1759412284037,
+  "lastUpdate": 1759412292047,
   "version": "2.0"
 }
