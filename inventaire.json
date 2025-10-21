@@ -67,8 +67,8 @@
       "modele": "HDMI",
       "etat": "Bon",
       "notes": "",
-      "quantite": 15,
-      "timestamp": 1759412311791
+      "quantite": 10,
+      "timestamp": 1761057092703
     },
     {
       "id": 71,
@@ -77,8 +77,8 @@
       "modele": "USB-C",
       "etat": "Bon",
       "notes": "",
-      "quantite": 27,
-      "timestamp": 1759412360194
+      "quantite": 4,
+      "timestamp": 1761057100781
     },
     {
       "id": 72,
@@ -97,8 +97,8 @@
       "modele": "HDMI",
       "etat": "Bon",
       "notes": "",
-      "quantite": 13,
-      "timestamp": 1758024464234
+      "quantite": 10,
+      "timestamp": 1761057126852
     },
     {
       "id": 74,
@@ -211,6 +211,6 @@
       "timestamp": 1758023738641
     }
   ],
-  "lastUpdate": 1761057075590,
+  "lastUpdate": 1761057127443,
   "version": "2.0"
 }
