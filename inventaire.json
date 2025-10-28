@@ -27,8 +27,8 @@
       "modele": "G10",
       "etat": "Bon",
       "notes": "",
-      "quantite": 3,
-      "timestamp": 1761636979615
+      "quantite": 4,
+      "timestamp": 1761637349808
     },
     {
       "id": 16,
@@ -201,6 +201,6 @@
       "timestamp": 1761057498283
     }
   ],
-  "lastUpdate": 1761637335476,
+  "lastUpdate": 1761637350252,
   "version": "2.0"
 }
