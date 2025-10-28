@@ -27,8 +27,8 @@
       "modele": "G10",
       "etat": "Bon",
       "notes": "",
-      "quantite": 4,
-      "timestamp": 1761058111687
+      "quantite": 3,
+      "timestamp": 1761636979615
     },
     {
       "id": 16,
@@ -47,8 +47,8 @@
       "modele": "G8",
       "etat": "Bon",
       "notes": "",
-      "quantite": 5,
-      "timestamp": 1761636893608
+      "quantite": 7,
+      "timestamp": 1761637229757
     },
     {
       "id": 18,
@@ -201,6 +201,6 @@
       "timestamp": 1761057498283
     }
   ],
-  "lastUpdate": 1761636939642,
+  "lastUpdate": 1761637230427,
   "version": "2.0"
 }
