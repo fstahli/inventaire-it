@@ -7,8 +7,8 @@
       "modele": "G1i",
       "etat": "Bon",
       "notes": "",
-      "quantite": 15,
-      "timestamp": 1761637334475
+      "quantite": 11,
+      "timestamp": 1762352906021
     },
     {
       "id": 104,
@@ -201,6 +201,6 @@
       "timestamp": 1761057498283
     }
   ],
-  "lastUpdate": 1762352801867,
+  "lastUpdate": 1762352906725,
   "version": "2.0"
 }
