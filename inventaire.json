@@ -219,8 +219,18 @@
       "notes": "",
       "quantite": 1,
       "timestamp": 1762868188771
+    },
+    {
+      "id": 112,
+      "type": "Adaptateur",
+      "marque": "",
+      "modele": "HUB USB C",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 3,
+      "timestamp": 1762868215444
     }
   ],
-  "lastUpdate": 1762868189198,
+  "lastUpdate": 1762868215973,
   "version": "2.0"
 }
