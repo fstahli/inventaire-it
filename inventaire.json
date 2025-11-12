@@ -127,8 +127,8 @@
       "modele": "USB-C",
       "etat": "Bon",
       "notes": "",
-      "quantite": 4,
-      "timestamp": 1762352994121
+      "quantite": 3,
+      "timestamp": 1762950143801
     },
     {
       "id": 77,
@@ -231,6 +231,6 @@
       "timestamp": 1762950119157
     }
   ],
-  "lastUpdate": 1762950119385,
+  "lastUpdate": 1762950144052,
   "version": "2.0"
 }
