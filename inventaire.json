@@ -219,18 +219,8 @@
       "notes": "",
       "quantite": 4,
       "timestamp": 1762950119157
-    },
-    {
-      "id": 113,
-      "type": "Écran",
-      "marque": "",
-      "modele": "USB-C",
-      "etat": "Neuf",
-      "notes": "",
-      "quantite": 1,
-      "timestamp": 1764256315837
     }
   ],
-  "lastUpdate": 1764256316452,
+  "lastUpdate": 1764256328258,
   "version": "2.0"
 }
