@@ -117,8 +117,8 @@
       "modele": "ALIMENTATION CH",
       "etat": "Bon",
       "notes": "",
-      "quantite": 12,
-      "timestamp": 1765283158827
+      "quantite": 13,
+      "timestamp": 1765283159243
     },
     {
       "id": 75,
@@ -127,8 +127,8 @@
       "modele": "USB-C",
       "etat": "Bon",
       "notes": "",
-      "quantite": 4,
-      "timestamp": 1764256232146
+      "quantite": 5,
+      "timestamp": 1765283162427
     },
     {
       "id": 77,
@@ -231,6 +231,6 @@
       "timestamp": 1762950119157
     }
   ],
-  "lastUpdate": 1765283159043,
+  "lastUpdate": 1765283162673,
   "version": "2.0"
 }
