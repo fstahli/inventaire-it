@@ -107,8 +107,8 @@
       "modele": "HDMI",
       "etat": "Bon",
       "notes": "",
-      "quantite": 15,
-      "timestamp": 1765283105389
+      "quantite": 14,
+      "timestamp": 1765283105954
     },
     {
       "id": 107,
@@ -117,8 +117,8 @@
       "modele": "ALIMENTATION CH",
       "etat": "Bon",
       "notes": "",
-      "quantite": 19,
-      "timestamp": 1761636637323
+      "quantite": 17,
+      "timestamp": 1765283150866
     },
     {
       "id": 75,
@@ -231,6 +231,6 @@
       "timestamp": 1762950119157
     }
   ],
-  "lastUpdate": 1765283105574,
+  "lastUpdate": 1765283150904,
   "version": "2.0"
 }
