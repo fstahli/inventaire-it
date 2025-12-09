@@ -217,8 +217,8 @@
       "modele": "USB-C",
       "etat": "Neuf",
       "notes": "",
-      "quantite": 5,
-      "timestamp": 1762353113326
+      "quantite": 4,
+      "timestamp": 1765283196339
     },
     {
       "id": 112,
@@ -231,6 +231,6 @@
       "timestamp": 1762950119157
     }
   ],
-  "lastUpdate": 1765283190701,
+  "lastUpdate": 1765283196527,
   "version": "2.0"
 }
