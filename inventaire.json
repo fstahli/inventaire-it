@@ -81,16 +81,6 @@
       "timestamp": 1765283097210
     },
     {
-      "id": 107,
-      "type": "Câble",
-      "marque": "",
-      "modele": "ALIMENTATION CH",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 11,
-      "timestamp": 1770631770533
-    },
-    {
       "id": 75,
       "type": "Casque",
       "marque": "",
@@ -211,6 +201,6 @@
       "timestamp": 1770631673189
     }
   ],
-  "lastUpdate": 1770631774239,
+  "lastUpdate": 1770631786674,
   "version": "2.0"
 }
