@@ -97,8 +97,8 @@
       "modele": "ALIMENTATION CH",
       "etat": "Bon",
       "notes": "",
-      "quantite": 13,
-      "timestamp": 1765283159243
+      "quantite": 11,
+      "timestamp": 1770631770533
     },
     {
       "id": 75,
@@ -221,6 +221,6 @@
       "timestamp": 1770631673189
     }
   ],
-  "lastUpdate": 1770631762914,
+  "lastUpdate": 1770631770742,
   "version": "2.0"
 }
