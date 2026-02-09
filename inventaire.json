@@ -209,8 +209,18 @@
       "notes": "",
       "quantite": 4,
       "timestamp": 1762950119157
+    },
+    {
+      "id": 115,
+      "type": "Écran",
+      "marque": "VGA",
+      "modele": "",
+      "etat": "Bon",
+      "notes": "",
+      "quantite": 1,
+      "timestamp": 1770631673189
     }
   ],
-  "lastUpdate": 1770631650868,
+  "lastUpdate": 1770631673386,
   "version": "2.0"
 }
