@@ -31,16 +31,6 @@
       "timestamp": 1771430150162
     },
     {
-      "id": 16,
-      "type": "Ordinateur",
-      "marque": "HP",
-      "modele": "G9",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 5,
-      "timestamp": 1765283016770
-    },
-    {
       "id": 17,
       "type": "Ordinateur",
       "marque": "HP",
@@ -181,6 +171,6 @@
       "timestamp": 1770631673189
     }
   ],
-  "lastUpdate": 1772034827758,
+  "lastUpdate": 1772034835209,
   "version": "2.0"
 }
