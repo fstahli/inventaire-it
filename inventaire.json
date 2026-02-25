@@ -17,8 +17,8 @@
       "modele": "G11",
       "etat": "Bon",
       "notes": "",
-      "quantite": 3,
-      "timestamp": 1770632305564
+      "quantite": 2,
+      "timestamp": 1772034849738
     },
     {
       "id": 105,
@@ -171,6 +171,6 @@
       "timestamp": 1770631673189
     }
   ],
-  "lastUpdate": 1772034846932,
+  "lastUpdate": 1772034849977,
   "version": "2.0"
 }
