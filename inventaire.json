@@ -61,16 +61,6 @@
       "timestamp": 1772640203945
     },
     {
-      "id": 75,
-      "type": "Casque",
-      "marque": "",
-      "modele": "USB-C",
-      "etat": "Bon",
-      "notes": "",
-      "quantite": 5,
-      "timestamp": 1772640208426
-    },
-    {
       "id": 77,
       "type": "Souris",
       "marque": "",
@@ -161,6 +151,6 @@
       "timestamp": 1762950119157
     }
   ],
-  "lastUpdate": 1773215174355,
+  "lastUpdate": 1773215233588,
   "version": "2.0"
 }
