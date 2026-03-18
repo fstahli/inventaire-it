@@ -97,8 +97,8 @@
       "modele": "USB",
       "etat": "Bon",
       "notes": "",
-      "quantite": 7,
-      "timestamp": 1772640273665
+      "quantite": 8,
+      "timestamp": 1773826931631
     },
     {
       "id": 88,
@@ -161,6 +161,6 @@
       "timestamp": 1773215271093
     }
   ],
-  "lastUpdate": 1773826921773,
+  "lastUpdate": 1773826931835,
   "version": "2.0"
 }
