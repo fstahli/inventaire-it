@@ -189,8 +189,18 @@
       "notes": "",
       "quantite": 4,
       "timestamp": 1777464348958
+    },
+    {
+      "id": 119,
+      "type": "Ordinateur",
+      "marque": "Apple",
+      "modele": "MacBook Air",
+      "etat": "Neuf",
+      "notes": "",
+      "quantite": 3,
+      "timestamp": 1777464392271
     }
   ],
-  "lastUpdate": 1777464349263,
+  "lastUpdate": 1777464392525,
   "version": "2.0"
 }
