@@ -47,8 +47,8 @@
       "modele": "G8",
       "etat": "Bon",
       "notes": "",
-      "quantite": 13,
-      "timestamp": 1777464063679
+      "quantite": 12,
+      "timestamp": 1777464064086
     },
     {
       "id": 18,
@@ -57,8 +57,8 @@
       "modele": "G5",
       "etat": "Moyen",
       "notes": "",
-      "quantite": 3,
-      "timestamp": 1773826906773
+      "quantite": 4,
+      "timestamp": 1777464068390
     },
     {
       "id": 71,
@@ -171,6 +171,6 @@
       "timestamp": 1773215271093
     }
   ],
-  "lastUpdate": 1777464063918,
+  "lastUpdate": 1777464068667,
   "version": "2.0"
 }
